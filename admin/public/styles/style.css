@@ -1,0 +1,9 @@
+.show-btn {
+  display: block;
+}
+
+#btn-edit-data:not(.show-btn),
+#btn-hapus-data:not(.show-btn),
+.password-input:not(.show-btn) {
+  display: none;
+}
