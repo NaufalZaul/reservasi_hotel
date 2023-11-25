@@ -3,11 +3,17 @@ include "../../../config/koneksi.php";
 
 session_start();
 
+// $id = uniqid();
+// $password = password_hash($_POST["password"], PASSWORD_DEFAULT);
 $username = $_POST["username"];
-$password = $_POST["password"];
+$password =$_POST["password"];
+
+// mysqli_query($conn, "INSERT INTO `admin` (`id`, `nama`, `username`,`password`, `level`) VALUES ('$id','Administrator','$username','$password','Admin')");
+
 
 if ($username != "" && $password != "") {
 
+  $get_password = mysqli_query($conn, "SELECT password FROM admin WHERE username = '$username'");
   $get_password = mysqli_query($conn, "SELECT password FROM admin WHERE username = '$username'");
   $data = mysqli_fetch_array($get_password);
 
@@ -21,9 +27,9 @@ if ($username != "" && $password != "") {
       $_SESSION["username"] = $all_data["username"];
       $_SESSION["nama"] = $all_data["nama"];
 
-      header("location: /hotel/admin");
+      header("location: /reservasi/admin");
     } else {
-      header("location: /hotel/admin/app/views/layout_access/login.php");
+      header("location: /reservasi/admin/app/views/layout_access/login.php");
     }
   }
 }

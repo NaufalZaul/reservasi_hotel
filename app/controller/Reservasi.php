@@ -26,9 +26,9 @@ if (confirmCode()) {
   if (mysqli_query($conn, $sql)) {
     session_destroy();
     var_dump('sukses');
-    header('location: /hotel/?page=formulir_reservasi&gedung=' . $nomor_gedung . '&status=sukses');
+    header('location: /reservasi/?page=formulir_reservasi&gedung=' . $nomor_gedung . '&status=sukses');
   } else {
-    header('location: /hotel/?page=formulir_reservasi&gedung=' . $nomor_gedung . '&status=gagal');
+    header('location: /reservasi/?page=formulir_reservasi&gedung=' . $nomor_gedung . '&status=gagal');
   }
 } else {
   $get_data = '';
@@ -41,5 +41,5 @@ if (confirmCode()) {
     }
   }
   createCode();
-  header('location: /hotel/?page=formulir_reservasi&' . $get_data . '&konfirmasi=salah');
+  header('location: /reservasi/?page=konfirmasi_reservasi&' . $get_data . '&konfirmasi=salah');
 }

@@ -37,5 +37,14 @@ $(function () {
   $('.form-group #show-password-input').click(() => {
     $('.form-group .password-input').toggleClass('show-btn');
   })
+  $('#example2').DataTable({
+    "paging": true,
+    "lengthChange": false,
+    "searching": false,
+    "ordering": true,
+    "info": true,
+    "autoWidth": false,
+    "responsive": true,
+  });
 
 })

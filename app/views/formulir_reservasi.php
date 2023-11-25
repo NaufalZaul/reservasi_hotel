@@ -1,3 +1,12 @@
+<?php
+if (isset($_GET['status'])) {
+  if ($_GET['status'] == 'sukses') {
+    echo '<script>alert("Pemesanan gedung bakorwil sedang di proses, silahkan cek email untuk update selanjutnya")</script>';
+  } else {
+    echo '<script>alert("Penyewaan gedung ' . $_GET['gedung'] . ' ' . $_GET['status'] . '")</script>';
+  }
+}
+?>
 <div class="site-section bg-light">
   <div class="px-5">
     <div class="row">
@@ -26,24 +35,20 @@
 
     <div class="row">
       <div class="col-md-9 mx-auto" data-aos="fade-up" data-aos-delay="100">
-        <form action="app/controller/KonfirmasiReservasi.php" method="POST" class="bg-white p-md-5 p-4 mb-5 border"
-          enctype="multipart/form-data">
+        <form action="app/controller/KonfirmasiReservasi.php" method="POST" class="bg-white p-md-5 p-4 mb-5 border" enctype="multipart/form-data">
           <input type="text" name="gedung" value="<?php echo $_GET['gedung']; ?>" hidden />
 
           <div class="form-group">
             <label class="text-black font-weight-bold" for="judul_acara">Judul Acara</label>
-            <input type="text" id="judul_acara" name="judul_acara" class="form-control"
-              placeholder="Judul acara yang diselenggarakan" />
+            <input type="text" id="judul_acara" name="judul_acara" class="form-control" placeholder="Judul acara yang diselenggarakan" />
           </div>
           <div class="form-group">
             <label class="text-black font-weight-bold" for="instansi">Instansi / Organisasi</label>
-            <input type="text" id="instansi" name="instansi" class="form-control"
-              placeholder="Nama instansi / organisasi" />
+            <input type="text" id="instansi" name="instansi" class="form-control" placeholder="Nama instansi / organisasi" />
           </div>
           <div class="form-group">
             <label class="text-black font-weight-bold" for="penanggung_jawab">Penanggung Jawab</label>
-            <input type="text" id="penanggung_jawab" name="penanggung_jawab" class="form-control text-capitalize"
-              placeholder="Penanggung Jawab" />
+            <input type="text" id="penanggung_jawab" name="penanggung_jawab" class="form-control text-capitalize" placeholder="Penanggung Jawab" />
           </div>
           <div class="form-group">
             <label class="text-black font-weight-bold" for="no_telp">Telepon</label>
@@ -65,17 +70,13 @@
             <label for="jumlah_orang" class="font-weight-bold text-black">Jumlah Orang</label>
             <input type="number" name="jumlah_orang" id="jumlah_orang" class="form-control" placeholder="Jumlah orang">
           </div>
-          <div class="form-group input-group d-flex flex-column">
-            <label for="surat_pengantar" class="font-weight-bold text-black">Upload Surat Pengantar</label>
-            <div class="custom-file w-100">
-              <input type="file" class="custom-file-input" name="surat_pengantar" id="surat_pengantar">
-              <label class="custom-file-label" for="surat_pengantar">Tambahkan surat pengantar</label>
-            </div>
+          <div class="form-group">
+            <label for="surat_pengantar">Upload Surat Pengantar</label>
+            <input type="file" class="form-control" name="surat_pengantar" id="surat_pengantar" placeholder="Surat Pengantar">
           </div>
           <div class="form-group">
             <label class="text-black font-weight-bold" for="message">Keperluan Penyewaan</label>
-            <textarea name="keperluan" id="message" class="form-control " cols="30" rows="8"
-              placeholder="Tulis keperluan penyewaan gedung"></textarea>
+            <textarea name="keperluan" id="message" class="form-control " cols="30" rows="8" placeholder="Tulis keperluan penyewaan gedung"></textarea>
           </div>
           <div class="form-group">
             <button class="btn btn-primary px-4 py-2" id="konfirmasi" name="sewa">Sewa sekarang</button>

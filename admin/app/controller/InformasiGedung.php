@@ -22,7 +22,7 @@ function addDataGedung()
   $sql = mysqli_query($conn, "INSERT INTO `gedung` (`id_gedung`, `nomor_gedung`, `foto`, `nama_pengurus`, `kapasitas`, `deskripsi`) VALUES ('$id_gedung','$nomor_gedung','$foto_gedung', '$nama_pengurus', '$kapasitas','$deskripsi')");
 
   if ($sql) {
-    header('Location: /hotel/admin/?filename=informasi_gedung');
+    header('Location: /reservasi/admin/?filename=informasi_gedung');
   }
 }
 
@@ -44,7 +44,7 @@ function editDataGedung()
   }
 
   if ($sql) {
-    header('Location: /hotel/admin/?filename=informasi_gedung');
+    header('Location: /reservasi/admin/?filename=informasi_gedung');
   }
 }
 
@@ -53,11 +53,10 @@ function deleteDataGedung()
   global $conn;
 
   $id_gedung = $_GET['id_gedung'];
-  var_dump($id_gedung);
   $sql = mysqli_query($conn, "DELETE FROM gedung WHERE id_gedung='$id_gedung'");
 
   if ($sql) {
-    header('Location: /hotel/admin/?filename=informasi_gedung');
+    header('Location: /reservasi/admin/?filename=informasi_gedung');
   }
 }
 

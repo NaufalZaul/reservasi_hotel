@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AdminLTE 3 | Log in</title>
+  <title>Reservasi Hotel</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet"
@@ -22,11 +22,11 @@
 <body class="hold-transition login-page">
   <div class="login-box">
     <div class="login-logo">
-      <h1>LOGIN</h1>
+      <h2>LOGIN ADMINISTRATOR</h2>
     </div>
     <div class="card">
       <div class="card-body login-card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Masukkan username dan password sesuai untuk dapat mengelola data</p>
 
         <form action="../../controller/access/auth/Login.php" method="POST">
           <div class="input-group mb-3">
@@ -48,7 +48,7 @@
           <div class="row">
             <div class="col-4 mx-auto">
               <button type="submit" class="btn btn-primary btn-block">
-                Sign In
+                Masuk
               </button>
             </div>
           </div>

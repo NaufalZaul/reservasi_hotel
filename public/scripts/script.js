@@ -71,7 +71,6 @@ $(function () {
         }
         arr.push(obj);
       })
-
       Calendar(arr);
     }
   })

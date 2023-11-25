@@ -3,21 +3,18 @@ include "app/config/koneksi.php";
 include "app/controller/HandlingTimeLaporan.php";
 
 $sql = mysqli_query($conn, "SELECT * FROM penyewaan");
-
-
 ?>
-<div class="content-wrapper">
 
+<div class="content-wrapper">
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Data Kamar</h1>
+          <h1 class="m-0">Laporan Bulanan</h1>
         </div>
       </div>
     </div>
   </div>
-
   <section class="content">
     <div class="container-fluid">
       <div class="row">
@@ -25,12 +22,8 @@ $sql = mysqli_query($conn, "SELECT * FROM penyewaan");
           <div class="card">
             <div class="card-header">
               <a href="app/controller/HandleCetakLaporan.php?cetak=bulanan" target="_blank">
-                <button type="submit" name="cetak_bulanan" class="btn btn-primary"> Cetak Laporan</button>
+                <button type="submit" name="cetak_bulanan" class="btn btn-primary">Cetak Laporan</button>
               </a>
-              <!-- <form action="app/controller/HandleCetakLaporan.php" method="post">
-                <button type="submit" name="cetak_bulanan" class="btn btn-primary">
-                  Cetak Laporan</button>
-              </form> -->
             </div>
             <div class="card-body table-responsive p-0">
               <table class="table table-hover text-nowrap">

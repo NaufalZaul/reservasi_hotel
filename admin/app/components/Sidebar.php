@@ -19,7 +19,7 @@ function handleMenuOpen($menu)
             <div class="image pl-0">
               <img src="public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
-            <p class="pl-2">Alexander Pierce</p>
+            <p class="pl-2 text-uppercase"><?= $_SESSION['username'] ?></p>
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
@@ -39,6 +39,14 @@ function handleMenuOpen($menu)
             <i class="nav-icon fas fa-hotel"></i>
             <p>
               INFORMASI GEDUNG
+            </p>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="?filename=dokumentasi_gedung" class="nav-link <?php handleMenuActive('dokumentasi_gedung') ?>">
+            <i class="nav-icon fas fa-photo-video"></i>
+            <p>
+              DOKUMENTASI GEDUNG
             </p>
           </a>
         </li>

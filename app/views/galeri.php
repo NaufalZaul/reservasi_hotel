@@ -1,6 +1,6 @@
 <?php
 include "app/config/koneksi.php";
-$gedung = mysqli_query($conn, "SELECT foto FROM gedung");
+$galeri = mysqli_query($conn, "SELECT * FROM galeri");
 ?>
 <div class="site-section bg-light">
   <div class="px-5">
@@ -11,11 +11,11 @@ $gedung = mysqli_query($conn, "SELECT foto FROM gedung");
     </div>
 
     <div class="row">
-      <?php while ($sql = mysqli_fetch_array($gedung)) { ?>
+      <?php while ($sql = mysqli_fetch_array($galeri)) { ?>
       <div class="col-md-4 col-lg-4 my-3">
         <div class="hotel-room text-center position-relative">
-          <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($sql['foto']) ?>" alt="Image"
-            class="w-100" style="height: 300px; object-fit:cover;">
+          <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($sql['foto_gedung']) ?>" alt="Image"
+            class="shadow-sm w-100" height="300" style="object-fit:cover;">
         </div>
       </div>
       <?php } ?>

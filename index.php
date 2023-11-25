@@ -9,7 +9,7 @@ session_start();
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Hotel Mercure</title>
+  <title>Reservasi Gedung</title>
   <link rel="stylesheet" href="public/utils/css/style.css">
   <link rel="stylesheet" href="public/utils/fonts/icomoon/style.css">
 
@@ -24,8 +24,6 @@ session_start();
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css">
   <link rel="stylesheet" href="public/utils/fonts/flaticon/font/flaticon.css">
   <link rel="stylesheet" href="public/utils/css/aos.css">
-
-
   <script src="public/utils/js/jquery-3.3.1.min.js"></script>
   <script type="text/javascript" src="public/scripts/ajax.js"></script>
   <script type="text/javascript" src="public/scripts/calender.js"></script> -->
@@ -33,7 +31,8 @@ session_start();
 
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="public/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -65,7 +64,7 @@ session_start();
   <script src="public/plugins/jquery-ui/jquery-ui.min.js"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
-    $.widget.bridge('uibutton', $.ui.button)
+  $.widget.bridge('uibutton', $.ui.button)
   </script>
   <!-- Bootstrap 4 -->
   <script src="public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -121,12 +120,12 @@ session_start();
     ?>
   </div>
 
-  <script src="public/utils/js/bootstrap.min.js"></script>
   <!-- <script src="public/utils/js/popper.min.js"></script> -->
   <!-- <script src="public/utils/js/owl.carousel.min.js"></script> -->
   <!-- <script src="public/utils/js/jquery.countdown.min.js"></script> -->
   <!-- <script src="public/utils/js/bootstrap-datepicker.min.js"></script> -->
   <!-- <script src="public/utils/js/mediaelement-and-player.min.js"></script> -->
+  <script src="public/utils/js/bootstrap.min.js"></script>
   <script src="public/utils/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="public/utils/js/jquery-ui.js"></script>
   <script src="public/utils/js/jquery.stellar.min.js"></script>
@@ -135,23 +134,23 @@ session_start();
   <script src="public/utils/js/main.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var mediaElements = document.querySelectorAll('video, audio'),
-        total = mediaElements.length;
-      for (var i = 0; i < total; i++) {
-        new MediaElementPlayer(mediaElements[i], {
-          pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
-          shimScriptAccess: 'always',
-          success: function() {
-            var target = document.body.querySelectorAll('.player'),
-              targetTotal = target.length;
-            for (var j = 0; j < targetTotal; j++) {
-              target[j].style.visibility = 'visible';
-            }
+  document.addEventListener('DOMContentLoaded', function() {
+    var mediaElements = document.querySelectorAll('video, audio'),
+      total = mediaElements.length;
+    for (var i = 0; i < total; i++) {
+      new MediaElementPlayer(mediaElements[i], {
+        pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+        shimScriptAccess: 'always',
+        success: function() {
+          var target = document.body.querySelectorAll('.player'),
+            targetTotal = target.length;
+          for (var j = 0; j < targetTotal; j++) {
+            target[j].style.visibility = 'visible';
           }
-        });
-      }
-    });
+        }
+      });
+    }
+  });
   </script>
 </body>
 

@@ -21,11 +21,11 @@ if ($sql) {
 
   echo "
     <script>alert('Data Berhasil Disimpan');
-    window.location='/hotel/index.php?page=login';
+    window.location='/reservasi/index.php?page=login';
     </script>";
 } else {
   echo "
     <script>alert('Data Gagal Disimpan');
-      window.location='/hotel/index.php?page=register';
+      window.location='/reservasi/index.php?page=register';
     </script>";
 }

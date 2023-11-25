@@ -1,13 +1,13 @@
 <?php
 include "app/config/koneksi.php";
-$sql = mysqli_query($conn, "SELECT * FROM gedung");
+$gedung = mysqli_query($conn, "SELECT * FROM gedung");
 ?>
 <div class="content-wrapper">
   <div class="content-header">
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Data Kamar</h1>
+          <h1 class="m-0">Informasi Gedung</h1>
         </div>
       </div>
     </div>
@@ -19,9 +19,6 @@ $sql = mysqli_query($conn, "SELECT * FROM gedung");
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <!-- <form action="app/controller/Email.php" method="post">
-                <button type="submit" class="btn btn-primary">KIRIMKAN</button>
-              </form> -->
 
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                 Tambah Data</button>
@@ -45,20 +42,18 @@ $sql = mysqli_query($conn, "SELECT * FROM gedung");
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($sql as $key => $data) { ?>
-                  <tr>
-                    <td><?= $key + 1 ?></td>
-                    <td><?= $data['nomor_gedung'] ?></td>
-                    <td><?= $data['nama_pengurus'] ?></td>
-                    <td><?= $data['kapasitas'] ?></td>
-                    <td><?= $data['deskripsi'] ?></td>
-                    <td id="button-aksi">
-                      <button type="button" id="btn-edit-data" class="btn btn-warning" data-toggle="modal"
-                        data-target="#modaledit-<?= $key ?>">Edit</button>
-                      <button type="button" id="btn-hapus-data" class="btn btn-danger" data-toggle="modal"
-                        data-target="#modalhapus-<?= $key ?>">Hapus</button>
-                    </td>
-                  </tr>
+                  <?php foreach ($gedung as $key => $data) { ?>
+                    <tr>
+                      <td><?= $key + 1 ?></td>
+                      <td><?= $data['nomor_gedung'] ?></td>
+                      <td><?= $data['nama_pengurus'] ?></td>
+                      <td><?= $data['kapasitas'] ?></td>
+                      <td><?= $data['deskripsi'] ?></td>
+                      <td id="button-aksi">
+                        <button type="button" id="btn-edit-data" class="btn btn-warning" data-toggle="modal" data-target="#modaledit-<?= $key ?>">Edit</button>
+                        <button type="button" id="btn-hapus-data" class="btn btn-danger" data-toggle="modal" data-target="#modalhapus-<?= $key ?>">Hapus</button>
+                      </td>
+                    </tr>
                   <?php } ?>
                 </tbody>
               </table>

@@ -1,111 +1,94 @@
 <?php
 include "app/config/koneksi.php";
 $query_penyewaan = mysqli_query($conn, "SELECT * FROM penyewaan");
-$query_penyewa = mysqli_query($conn, "SELECT * FROM penyewa ORDER BY nama_lengkap ASC");
 
-$arr_data_email = array();
-$arr_data_pj = array();
-$arr_data_instansi = array();
-foreach ($query_penyewaan as $dt) {
-  array_push($arr_data_email, $dt['email']);
-  array_push($arr_data_pj, $dt['penanggung_jawab']);
-  array_push($arr_data_instansi, $dt['instansi']);
-}
-$uniqueItemsEmail = array_unique($arr_data_email);
-$uniqueItemsPJ = array_unique($arr_data_pj);
-$uniqueItemsInstansi = array_unique($arr_data_instansi);
+foreach ($query_penyewaan as $key => $data) {
 ?>
-
-<!-- <?php foreach ($query_penyewaan as $data) { ?> -->
 <form action="app/controller/DataPenyewaan.php" method="POST">
-
-  <!-- <?php } ?> -->
-
+  <input type="text" hidden name="id_penyewaan" value="<?= $data['id_penyewaan'] ?>">
   <!-- Modal Balasan-->
-  <div class="modal fade" id="modal-balasan">
-    <div class="modal-dialog modal-xl">
+  <div class="modal fade" id="modal<?= $key ?>">
+    <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Balasan</h4>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label class="font-weight-bold" for="email">Email</label>
-            <div class="accordion" id="accordionExample">
-              <div class="card">
-                <div class="card-header p-1" id="headingOne">
-                  <h2 class="mb-0">
-                    <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
-                      data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Pilih beberapa email untuk surat balasan
-                    </button>
-                  </h2>
+        <form action="app/controller/DataPenyewa.php" method="POST">
+          <div class="modal-header">
+            <h4 class="modal-title">Balasan untuk <?= $data['judul_acara'] ?></h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="card-body">
+              <div class="form-group">
+                <label class="text-black font-weight-bold" for="judul_acara">Judul Acara</label>
+                <input type="text" id="judul_acara" name="judul_acara" class="form-control"
+                  placeholder="Judul acara yang diselenggarakan" value="<?= $data['judul_acara'] ?>" />
+              </div>
+              <div class="form-group">
+                <label class="text-black font-weight-bold" for="instansi">Instansi / Organisasi</label>
+                <input type="text" id="instansi" name="instansi" class="form-control"
+                  placeholder="Nama instansi / organisasi" value="<?= $data['instansi'] ?>" />
+              </div>
+              <div class="form-group">
+                <label class="text-black font-weight-bold" for="penanggung_jawab">Penanggung Jawab</label>
+                <input type="text" id="penanggung_jawab" name="penanggung_jawab" class="form-control text-capitalize"
+                  placeholder="Penanggung Jawab" value="<?= $data['penanggung_jawab'] ?>" />
+              </div>
+              <div class="form-group">
+                <label class="text-black font-weight-bold" for="no_telp">Telepon</label>
+                <input type="number" id="no_telp" name="no_telp" class="form-control " placeholder="Nomor telepon"
+                  value="<?= $data['no_telp'] ?>" />
+              </div>
+              <div class="form-group">
+                <label class="text-black font-weight-bold" for="email">Email</label>
+                <input type="email" id="email" name="email" class="form-control " placeholder="Email"
+                  value="<?= $data['email'] ?>" />
+              </div>
+              <div class="form-group">
+                <label class="text-black font-weight-bold" for="tanggal_mulai">Tanggal Mulai</label>
+                <input type="date" id="tanggal_mulai" name="tanggal_mulai" class="form-control"
+                  value="<?= $data['tanggal_mulai'] ?>">
+              </div>
+              <div class="form-group">
+                <label class="text-black font-weight-bold" for="tanggal_akhir">Tanggal Akhir</label>
+                <input type="date" id="tanggal_akhir" name="tanggal_akhir" class="form-control"
+                  value="<?= $data['tanggal_akhir'] ?>">
+              </div>
+              <div class="form-group">
+                <label for="jumlah_orang" class="font-weight-bold text-black">Jumlah Orang</label>
+                <input type="number" name="jumlah_orang" id="jumlah_orang" class="form-control"
+                  placeholder="Jumlah orang" value="<?= $data['jumlah_orang'] ?>">
+              </div>
+              <div class="form-group">
+                <label class="font-weight-bold">Status Penyewaan</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="status">Status</label>
+                  </div>
+                  <select class="custom-select" name="status" id="status">
+                    <option value="Menunggu" <?= $data['status'] == 'Menunggu' ? 'selected' : null ?>>Menunggu
+                    </option>
+                    <option value="Disetujui" <?= $data['status'] == 'Disetujui' ? 'selected' : null ?>>Disetujui
+                    </option>
+                    <option value="Ditolak" <?= $data['status'] == 'Ditolak' ? 'selected' : null ?>>Ditolak</option>
+                  </select>
                 </div>
-
-                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <ul class="list-group rounded-0">
-                    <li class="list-group-item d-flex row border-0">
-                      <div class="col-1"></div>
-                      <label class="col-4 mb-0">Email</label>
-                      <label class="col-3 mb-0">Penanggung Jawab</label>
-                      <label class="col-4 mb-0">Instansi</label>
-                    </li>
-                    <div class="dropdown-divider my-0"></div>
-
-                    <?php foreach ($uniqueItemsEmail as $key => $email) { ?>
-                    <li class="list-group-item d-flex row align-items-center border-0">
-                      <span class="col-1">
-                        <input type="checkbox" name="email[]" class="mr-2" id="<?= $email ?>" value="<?= $email ?>">
-                      </span>
-                      <span class="col-4">
-                        <label for="<?= $email ?>" class="m-0 font-weight-normal"><?= $email ?></label>
-                      </span>
-                      <span class="col-3">
-                        <label for="<?= $email ?>" class="m-0 font-weight-normal"><?= $uniqueItemsPJ[$key] ?></label>
-                      </span>
-                      <span class="col-4">
-                        <label for="<?= $email ?>"
-                          class="m-0 font-weight-normal"><?= $uniqueItemsInstansi[$key] ?></label>
-                      </span>
-                    </li>
-                    <?php if ($email != end($uniqueItemsEmail)) { ?>
-                    <div class="dropdown-divider my-0"></div>
-                    <?php }
-                    } ?>
-                  </ul>
-                </div>
+              </div>
+              <div class="form-group">
+                <label class="text-black font-weight-bold" for="message">Surat Balasan</label>
+                <textarea name="pesan_balasan" id="message" class="form-control " cols="30" rows="8"
+                  placeholder="Balasan penyewaan gedung"></textarea>
               </div>
             </div>
           </div>
-          <div class="form-group">
-            <label class="font-weight-bold">Status Penyewaan</label>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <label class="input-group-text" for="status">Status</label>
-              </div>
-              <select class="custom-select" name="status" id="status">
-                <option value="Menunggu">Menunggu
-                </option>
-                <option value="Disetujui">Disetujui
-                </option>
-                <option value="Ditolak">Ditolak</option>
-              </select>
-            </div>
+          <div class="modal-footer justify-content-between">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>
+            <button type="submit" name="balasan" class="btn btn-primary">Kirim balasan</button>
           </div>
-          <div class="form-group d-flex flex-column">
-            <label class="font-weight-bold" for="feedback">Feedback</label>
-            <textarea class="form-control" name="feedback" id="feedback" cols="30" rows="7"
-              placeholder="Tulis alasan yang sesuai dari status pernyataan"></textarea>
-          </div>
-        </div>
-        <div class="modal-footer justify-content-between">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" name="balasan" class="btn btn-primary">Save changes</button>
-        </div>
+        </form>
       </div>
     </div>
-    <!-- Modal Balasan-->
+  </div>
 </form>
+<?php } ?>
+<!-- Modal Balasan-->

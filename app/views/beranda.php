@@ -1,23 +1,24 @@
 <?php
 include "app/config/koneksi.php";
 $gedung = mysqli_query($conn, "SELECT * FROM gedung");;
+$galeri = mysqli_query($conn, "SELECT * FROM galeri");;
 ?>
 
 <div class="site-section">
   <div class="px-5">
-    <!-- <div class="section-heading text-center"> -->
-    <!-- <img src="public/images/francesca-saraco-_dS27XGgRyQ-unsplash.jpg" alt="Image" class="w-100" height="500" style="object-fit: cover;">
-      <h2 class="my-5">Tentang Kami</h2> -->
     <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active" data-interval="10000">
-          <img src="public/images/francesca-saraco-_dS27XGgRyQ-unsplash.jpg" alt="Image" class="w-100" height="500" style="object-fit: cover;">
+          <img src="public/images/francesca-saraco-_dS27XGgRyQ-unsplash.jpg" alt="Image" class="w-100" height="500"
+            style="object-fit: cover;">
         </div>
         <div class="carousel-item" data-interval="2000">
-          <img src="public/images/rhema-kallianpur-jbJ-_hw2yag-unsplash.jpg" alt="Image" class="w-100" height="500" style="object-fit: cover;">
+          <img src="public/images/rhema-kallianpur-jbJ-_hw2yag-unsplash.jpg" alt="Image" class="w-100" height="500"
+            style="object-fit: cover;">
         </div>
         <div class="carousel-item">
-          <img src="public/images/fernando-alvarez-rodriguez-M7GddPqJowg-unsplash.jpg" alt="Image" class="w-100" height="500" style="object-fit: cover;">
+          <img src="public/images/fernando-alvarez-rodriguez-M7GddPqJowg-unsplash.jpg" alt="Image" class="w-100"
+            height="500" style="object-fit: cover;">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-target="#carouselExampleInterval" data-slide="prev">
@@ -67,21 +68,22 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");;
     <div class="row">
       <?php while ($sql = mysqli_fetch_array($gedung)) {
       ?>
-        <div class="col-md-4 col-lg-4 my-3">
-          <div class="hotel-room text-center position-relative">
-            <a href="?page=detail_gedung&gedung=<?= $sql['nomor_gedung'] ?>">
-              <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($sql['foto']) ?>" alt="Image" class="w-100" style="height: 300px; filter: brightness(.5); object-fit:cover;">
-              <div class="position-absolute px-4 py-2" style="bottom: 0;left: 0;">
-                <h3 class="heading text-left text-white m-0">
-                  Gedung <?= $sql['nomor_gedung'] ?>
-                </h3>
-                <p class="text-white mb-1 text-capitalize" style="font-size: 18px;">
-                  Pengurus: <?= $sql['nama_pengurus'] ?>
-                </p>
-              </div>
-            </a>
-          </div>
+      <div class="col-md-4 col-lg-4 my-3">
+        <div class="hotel-room text-center position-relative">
+          <a href="?page=detail_gedung&gedung=<?= $sql['nomor_gedung'] ?>">
+            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($sql['foto']) ?>" alt="Image"
+              class="w-100" style="height: 300px; filter: brightness(.5); object-fit:cover;">
+            <div class="position-absolute px-4 py-2" style="bottom: 0;left: 0;">
+              <h3 class="heading text-left text-white m-0">
+                Gedung <?= $sql['nomor_gedung'] ?>
+              </h3>
+              <p class="text-white mb-1 text-capitalize" style="font-size: 18px;">
+                Pengurus: <?= $sql['nama_pengurus'] ?>
+              </p>
+            </div>
+          </a>
         </div>
+      </div>
       <?php }
       ?>
     </div>
@@ -100,12 +102,13 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");;
     </div>
 
     <div class="row">
-      <?php while ($sql = mysqli_fetch_array($gedung)) { ?>
-        <div class="col-md-4 col-lg-4 my-3">
-          <div class="hotel-room text-center position-relative">
-            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($sql['foto']) ?>" alt="Image" class="w-100" style="height: 300px; object-fit:cover;">
-          </div>
+      <?php while ($sql = mysqli_fetch_array($galeri)) { ?>
+      <div class="col-md-4 col-lg-4 my-3">
+        <div class="hotel-room text-center position-relative">
+          <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($sql['foto_gedung']) ?>" alt="Image"
+            class="w-100 shadow-sm" style="height: 300px; object-fit:cover;">
         </div>
+      </div>
       <?php } ?>
     </div>
 

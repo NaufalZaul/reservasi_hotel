@@ -3,8 +3,6 @@ include "app/config/koneksi.php";
 include "app/controller/HandlingTimeLaporan.php";
 
 $sql = mysqli_query($conn, "SELECT * FROM penyewaan");
-$key = 1;
-
 ?>
 <div class="content-wrapper">
 
@@ -12,7 +10,7 @@ $key = 1;
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Data Kamar</h1>
+          <h1 class="m-0">LLaporan Tahunan</h1>
         </div>
       </div>
     </div>
@@ -24,11 +22,8 @@ $key = 1;
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <form action="app/controller/HandleCetakLaporan.php" method="post">
-                <button type="submit" name="cetak_tahunan" class="btn btn-primary">
-                  Cetak Laporan</button>
-              </form>
-              <a href="/hotel/admin/app/views/cetak_pdf.php">
+              <a href="app/controller/HandleCetakLaporan.php?cetak=tahunan" target="_blank">
+                <button type="submit" name="cetak_bulanan" class="btn btn-primary"> Cetak Laporan</button>
               </a>
             </div>
             <div class="card-body table-responsive p-0">

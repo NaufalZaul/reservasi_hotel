@@ -4,4 +4,4 @@ session_destroy();
 
 $_SESSION = array();
 
-header('location: /hotel/admin/index.php');
+header('location: /reservasi/admin/index.php');

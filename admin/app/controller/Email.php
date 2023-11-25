@@ -16,23 +16,23 @@ function Email($data)
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'ghostroomintheworld@gmail.com';
-    $mail->Password   = 'cdgb qsyf xcrx nlzs';
+    $mail->Username   = 'gilang_2005101102@mhs.unipma.ac.id';
+    $mail->Password   = 'ozfz cbcs apbn amor';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = 465;
 
     //Recipients
-    $mail->setFrom('ghostroomintheworld@gmail.com', 'Ghost Room');
-    foreach ($data->email as $key => $value) {
-      $mail->addAddress($value);
-    }
+    $mail->setFrom('gilang_2005101102@mhs.unipma.ac.id', 'Gilang');
+    $mail->addAddress($data->email, $data->penanggung_jawab);
 
     //Content
     $mail->isHTML(true);
-    $html = '<h2>Penyewaan Gedung ';
+    $html = '<h2>Penyewaan Gedung Untuk Acara ';
+    $html .= $data->judul_acara;
+    $html .= '</h2><h3>Status Penyewaan Gedung ';
     $html .= $data->status;
-    $html .= '</h2><p>';
-    $html .= $data->feedback;
+    $html .= '</h3><p>';
+    $html .= $data->balasan;
     $html .= '</p>';
 
     $mail->Subject = 'Balasan Penyewaan Gedung';
@@ -41,12 +41,11 @@ function Email($data)
 
     if ($mail->send()) {
       echo 'Message has been sent';
-      // var_dump(getallheaders());
-      header('Location: /hotel/admin/?filename=data_penyewaan');
+      header('Location: /reservasi/admin/?filename=data_penyewaan');
       exit;
     }
   } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
   }
 }
-header('Location: /hotel/admin/?filename=data_penyewaan');
+header('Location: /reservasi/admin/?filename=data_penyewaan');

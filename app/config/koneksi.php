@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db = "dbhotel";
+$db = "reservasi_gedung";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $db);

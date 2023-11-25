@@ -31,7 +31,7 @@ function addDataPenyewa()
   }
 
   if (mysqli_query($conn, $query)) {
-    header('Location: /hotel/admin/?filename=data_penyewa');
+    header('Location: /reservasi/admin/?filename=data_penyewa');
   }
 }
 
@@ -58,7 +58,7 @@ function editDataPenyewa()
   }
 
   if (mysqli_query($conn, $query)) {
-    header('Location: /hotel/admin/?filename=data_penyewa');
+    header('Location: /reservasi/admin/?filename=data_penyewa');
   }
 }
 
@@ -70,6 +70,6 @@ function deleteDataPenyewa()
   $sql = mysqli_query($conn, "DELETE FROM penyewa WHERE id_penyewa='$id_penyewa'");
 
   if ($sql) {
-    header('Location: /hotel/admin/?filename=data_penyewa');
+    header('Location: /reservasi/admin/?filename=data_penyewa');
   }
 }
