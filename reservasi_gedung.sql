@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2023 pada 04.19
+-- Waktu pembuatan: 25 Nov 2023 pada 13.25
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.1.17
 
@@ -34,6 +34,13 @@ CREATE TABLE `admin` (
   `password` varchar(200) NOT NULL,
   `level` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id`, `nama`, `username`, `password`, `level`) VALUES
+('655b5e33423cf', 'Administrator', 'admin', '$2y$10$mVApEgXtri.71iLdDnw6KOCTxI5S7FYLOPSgEJxk9qUcu7xx3mZ1K', 'Admin');
 
 -- --------------------------------------------------------
 
