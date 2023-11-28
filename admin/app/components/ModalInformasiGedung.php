@@ -17,8 +17,8 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");
         <div class="modal-body">
           <div class="card-body">
             <div class="form-group">
-              <label for="exampleInputEmail1">Nomor Gedung</label>
-              <input type="number" class="form-control" name="nomor_gedung" id="exampleInputEmail1" placeholder="Nomor gedung">
+              <label for="exampleInputEmail1">Nama Gedung</label>
+              <input type="text" class="form-control" name="nama_gedung" id="exampleInputEmail1" placeholder="Nama gedung">
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Foto Gedung</label>
@@ -58,7 +58,7 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");
           <input type="text" name="id_gedung" value="<?= $data['id_gedung'] ?>" hidden>
           <!-- masih terlihat -->
           <div class="modal-header">
-            <h4 class="modal-title">Edit Data Gedung <?= $data['nomor_gedung'] ?></h4>
+            <h4 class="modal-title">Edit Data Gedung <?= $data['nama_gedung'] ?></h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -66,8 +66,8 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");
           <div class="modal-body">
             <div class="card-body">
               <div class="form-group">
-                <label for="exampleInputEmail1">Nomor Gedung</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nomor gedung" name="nomor_gedung" value="<?= $data['nomor_gedung'] ?>">
+                <label for="exampleInputEmail1">Nama Gedung</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama gedung" name="nomor_gedung" value="<?= $data['nama_gedung'] ?>">
               </div>
               <div class="form-group">
                 <label>Foto Gedung</label>
@@ -113,7 +113,7 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");
             </button>
           </div>
           <div class="modal-body">
-            <h4>Yakin ingin menghpus informasi gedung <?= $data['nomor_gedung'] ?></h4>
+            <h4>Yakin ingin menghpus informasi gedung <?= $data['nama_gedung'] ?></h4>
             <input type="text" class="form-control" name="id_gedung" id="exampleInputPassword1" placeholder="Password" value="<?= $data['id_gedung'] ?>" hidden>
           </div>
           <div class="modal-footer justify-content-between">

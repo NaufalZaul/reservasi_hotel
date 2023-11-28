@@ -1,6 +1,13 @@
 <?php
 include "app/config/koneksi.php";
 $galeri = mysqli_query($conn, "SELECT * FROM galeri");
+
+$arr = [];
+foreach ($galeri as $key => $data) {
+  array_push($arr, $data['nama_gedung']);
+}
+$nama_gedung = array_unique($arr);
+
 ?>
 <div class="content-wrapper">
   <div class="content-header">
@@ -30,24 +37,29 @@ $galeri = mysqli_query($conn, "SELECT * FROM galeri");
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>ID</th>
-                    <th>Nomor Gedung</th>
-                    <th>Foto Gedung</th>
+                    <th>Nama Gedung</th>
+                    <th class="w-full">Foto Gedung</th>
                     <th></th>
                   </tr>
                 </thead>
                 <tbody>
-                  <?php foreach ($galeri as $key => $data) { ?>
+                  <?php foreach ($nama_gedung as $key => $nama) { ?>
                   <tr>
                     <td><?= $key + 1 ?></td>
-                    <td><?= $data['id_galeri'] ?></td>
-                    <td><?= $data['nomor_gedung'] ?></td>
-                    <td style="width: 350px;height: 200px;">
-                      <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($data['foto_gedung']) ?>"
-                        alt="Image" class="w-100 h-100" style="filter: brightness(.5); object-fit:cover;">
+                    <td><?= $nama ?></td>
+                    <td class="border-0  d-flex">
+                      <?php foreach ($galeri as $key => $data) {
+                          if ($data['nama_gedung'] == $nama) {
+                        ?>
+                      <span style="width: 350px;height: 200px;">
+                        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($data['foto_gedung']) ?>"
+                          alt="Image" class="w-100 h-100" style="filter: brightness(.5); object-fit:cover;">
+                      </span>
+                      <?php }
+                        } ?>
                     </td>
                     <td id="button-aksi">
-                      <button type="button" id="btn-hapus-data" class="btn btn-danger" data-toggle="modal"
+                      <button type="button" class="btn btn-danger" data-toggle="modal"
                         data-target="#modalhapus-<?= $key ?>">Hapus</button>
                     </td>
                   </tr>
@@ -63,3 +75,20 @@ $galeri = mysqli_query($conn, "SELECT * FROM galeri");
   </section>
 
 </div>
+<!-- <tbody>
+        <?php foreach ($galeri as $key => $data) { ?>
+          <tr>
+            <td><?= $key + 1 ?></td>
+            <td><?= $data['id_galeri'] ?></td>
+            <td><?= $data['nama_gedung'] ?></td>
+            <td style="width: 350px;height: 200px;">
+              <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($data['foto_gedung']) ?>" alt="Image" class="w-100 h-100" style="filter: brightness(.5); object-fit:cover;">
+            </td>
+            <td id="button-aksi">
+              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalhapus-<?= $key ?>">Hapus</button>
+              <button type="button" id="btn-hapus-data" class="btn btn-danger" data-toggle="modal"
+              data-target="#modalhapus-<?= $key ?>">Hapus</button> 
+</td>
+</tr>
+<?php } ?>
+</tbody> -->

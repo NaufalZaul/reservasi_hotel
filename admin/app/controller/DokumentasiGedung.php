@@ -11,10 +11,10 @@ function addDokumentasiGedung()
 {
   global $conn;
   $id_galeri = uniqid();
-  $nomor_gedung = (int) $_POST["nomor_gedung"];
+  $nama_gedung = $_POST["nama_gedung"];
   $foto_gedung = fileImage();
 
-  $sql = mysqli_query($conn, "INSERT INTO `galeri` (`id_galeri`, `nomor_gedung`, `foto_gedung`) VALUES ('$id_galeri','$nomor_gedung','$foto_gedung')");
+  $sql = mysqli_query($conn, "INSERT INTO `galeri` (`id_galeri`, `nama_gedung`, `foto_gedung`) VALUES ('$id_galeri','$nama_gedung','$foto_gedung')");
 
   if ($sql) {
     header('Location: /reservasi/admin/?filename=dokumentasi_gedung');

@@ -24,13 +24,13 @@ $sql = mysqli_query($conn, "SELECT * FROM penyewaan");
                 <thead>
                   <tr>
                     <th>No</th>
-                    <th>Gedung</th>
+                    <th>Nama Gedung</th>
                     <th>Penanggung Jawab</th>
                     <th>Nomor Telepon</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Akhir</th>
                     <th>Surat Pengantar</th>
-                    <th>Jumlah Orang</th>
+                    <th>Jumlah Peserta</th>
                     <th>Status</th>
                     <th></th>
                   </tr>
@@ -42,7 +42,7 @@ $sql = mysqli_query($conn, "SELECT * FROM penyewaan");
                         <?= $key + 1 ?>
                       </td>
                       <td>
-                        <?= $data['nomor_gedung'] ?>
+                        <?= $data['nama_gedung'] ?>
                       </td>
                       <td>
                         <?= $data['penanggung_jawab'] ?>
@@ -62,7 +62,7 @@ $sql = mysqli_query($conn, "SELECT * FROM penyewaan");
                     -->
                       </td>
                       <td>
-                        <?= $data['jumlah_orang'] ?>
+                        <?= $data['jumlah_peserta'] ?>
                       </td>
                       <td>
                         <?= $data['status'] ?>

@@ -84,7 +84,7 @@ function handleMenuOpen($menu)
             <li class="nav-item ">
               <a href="?filename=laporan_bulanan" class="nav-link <?php handleMenuActive('laporan_bulanan') ?>">
                 <i class="far fa-circle nav-icon"></i>
-                <p>BULAN INI</p>
+                <p>BULANAN</p>
               </a>
             </li>
             <!-- <li class="nav-item <?= $_GET['filename'] == 'laporan_tahunan' ? 'menu-open' : null ?>"> -->

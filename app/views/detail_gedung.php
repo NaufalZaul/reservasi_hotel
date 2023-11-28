@@ -4,12 +4,12 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");
 $galeri = mysqli_query($conn, "SELECT * FROM galeri");
 
 while ($row = mysqli_fetch_array($gedung)) {
-  if ($row['nomor_gedung'] == $_GET['gedung']) {
+  if ($row['nama_gedung'] == $_GET['gedung']) {
 ?>
 <div class="site-section" style="min-height: 100vh;">
   <div class="px-5">
     <div class="text-center">
-      <h1 class="mt-5 mb-4" style="font-weight: 700;">Detail Gedung <?= $row['nomor_gedung'] ?></h1>
+      <h1 class="mt-5 mb-4" style="font-weight: 700;">Detail Gedung <?= $row['nama_gedung'] ?></h1>
       <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['foto']) ?>" alt="Image"
         class="img-fluid w-75 mx-auto">
     </div>
@@ -19,7 +19,7 @@ while ($row = mysqli_fetch_array($gedung)) {
       <div class="row">
         <?php
             while ($sql = mysqli_fetch_array($galeri)) {
-              if ($sql['nomor_gedung'] == $_GET['gedung']) {
+              if ($sql['nama_gedung'] == $_GET['gedung']) {
             ?>
         <div class="col-md-4 col-lg-4 my-3">
           <div class="hotel-room text-center position-relative">

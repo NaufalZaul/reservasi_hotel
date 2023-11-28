@@ -15,7 +15,7 @@ if (isset($_POST['logout'])) {
             <h2 class="mb-0 site-logo">
               <a href="index.php" class="d-flex align-items-center">
                 <img src="public/images/jawa timur.png" width="35">
-                <p class="m-0 ml-3" style="font-weight: 600; color: #13C5DD;">Bakorwil I Madiun</p>
+                <p class="m-0 ml-3 text-uppercase" style="font-weight: 600; color: #13C5DD;">Bakorwil I Madiun</p>
               </a>
             </h2>
           </div>

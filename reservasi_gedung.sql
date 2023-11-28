@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Nov 2023 pada 04.19
+-- Waktu pembuatan: 28 Nov 2023 pada 06.17
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.1.17
 
@@ -35,6 +35,13 @@ CREATE TABLE `admin` (
   `level` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `admin`
+--
+
+INSERT INTO `admin` (`id`, `nama`, `username`, `password`, `level`) VALUES
+('655b5e33423cf', 'Administrator', 'admin', '$2y$10$mVApEgXtri.71iLdDnw6KOCTxI5S7FYLOPSgEJxk9qUcu7xx3mZ1K', 'Admin');
+
 -- --------------------------------------------------------
 
 --
@@ -43,7 +50,7 @@ CREATE TABLE `admin` (
 
 CREATE TABLE `galeri` (
   `id_galeri` varchar(100) NOT NULL,
-  `nomor_gedung` int(11) NOT NULL,
+  `nama_gedung` varchar(100) NOT NULL,
   `foto_gedung` blob NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -55,7 +62,7 @@ CREATE TABLE `galeri` (
 
 CREATE TABLE `gedung` (
   `id_gedung` varchar(50) NOT NULL,
-  `nomor_gedung` int(11) NOT NULL,
+  `nama_gedung` varchar(100) NOT NULL,
   `foto` blob NOT NULL,
   `nama_pengurus` varchar(100) DEFAULT NULL,
   `kapasitas` int(11) DEFAULT NULL,
@@ -88,17 +95,17 @@ CREATE TABLE `penyewa` (
 
 CREATE TABLE `penyewaan` (
   `id_penyewaan` varchar(100) NOT NULL,
-  `judul_acara` varchar(100) NOT NULL,
-  `nomor_gedung` int(11) NOT NULL,
+  `keperluan` varchar(100) NOT NULL,
+  `nama_gedung` varchar(100) NOT NULL,
   `instansi` varchar(100) NOT NULL,
   `penanggung_jawab` varchar(100) NOT NULL,
   `no_telp` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
   `tanggal_mulai` date NOT NULL,
   `tanggal_akhir` date NOT NULL,
-  `jumlah_orang` int(11) NOT NULL,
+  `jumlah_peserta` int(11) NOT NULL,
   `surat_pengantar` varchar(100) NOT NULL,
-  `keperluan` varchar(100) NOT NULL,
+  `deskripsi` varchar(100) NOT NULL,
   `status` enum('Menunggu','Disetujui','Ditolak') NOT NULL DEFAULT 'Menunggu'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
