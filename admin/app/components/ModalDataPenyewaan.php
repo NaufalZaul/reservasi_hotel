@@ -12,7 +12,7 @@ foreach ($query_penyewaan as $key => $data) {
       <div class="modal-content">
         <form action="app/controller/DataPenyewa.php" method="POST">
           <div class="modal-header">
-            <h4 class="modal-title">Balasan untuk <?= $data['judul_acara'] ?></h4>
+            <h4 class="modal-title">Balasan untuk <?= $data['keperluan'] ?></h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -20,9 +20,9 @@ foreach ($query_penyewaan as $key => $data) {
           <div class="modal-body">
             <div class="card-body">
               <div class="form-group">
-                <label class="text-black font-weight-bold" for="judul_acara">Judul Acara</label>
-                <input type="text" id="judul_acara" name="judul_acara" class="form-control"
-                  placeholder="Judul acara yang diselenggarakan" value="<?= $data['judul_acara'] ?>" />
+                <label class="text-black font-weight-bold" for="keperluan">Keperluan</label>
+                <input type="text" id="keperluan" name="keperluan" class="form-control"
+                  placeholder="Judul acara yang diselenggarakan" value="<?= $data['keperluan'] ?>" />
               </div>
               <div class="form-group">
                 <label class="text-black font-weight-bold" for="instansi">Instansi / Organisasi</label>
@@ -55,9 +55,9 @@ foreach ($query_penyewaan as $key => $data) {
                   value="<?= $data['tanggal_akhir'] ?>">
               </div>
               <div class="form-group">
-                <label for="jumlah_orang" class="font-weight-bold text-black">Jumlah Orang</label>
-                <input type="number" name="jumlah_orang" id="jumlah_orang" class="form-control"
-                  placeholder="Jumlah orang" value="<?= $data['jumlah_orang'] ?>">
+                <label for="jumlah_peserta" class="font-weight-bold text-black">Jumlah Peserta</label>
+                <input type="number" name="jumlah_peserta" id="jumlah_peserta" class="form-control"
+                  placeholder="Jumlah orang" value="<?= $data['jumlah_peserta'] ?>">
               </div>
               <div class="form-group">
                 <label class="font-weight-bold">Status Penyewaan</label>

@@ -19,18 +19,8 @@ $sql = mysqli_query($conn, "SELECT * FROM penyewaan");
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <!-- <div class="card-header">
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
-                Tambah Data</button>
-
-              <button type="button" id="showing-edit-btn" class="btn btn-warning">
-                Edit Data</button>
-
-              <button type="button" id="showing-hapus-btn" class="btn btn-danger">
-                Hapus Data</button>
-            </div> -->
             <div class="card-body table-responsive p-0">
-              <table class="table table-hover text-nowrap">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th>No</th>

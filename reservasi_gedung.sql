@@ -3,11 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-<<<<<<< HEAD
--- Waktu pembuatan: 28 Nov 2023 pada 06.17
-=======
--- Waktu pembuatan: 25 Nov 2023 pada 13.25
->>>>>>> 83807f1eeba9e09139e354dc1835ee9a65db1e05
+-- Waktu pembuatan: 28 Nov 2023 pada 06.46
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.1.17
 

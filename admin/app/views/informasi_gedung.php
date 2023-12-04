@@ -22,23 +22,17 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");
 
               <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-default">
                 Tambah Data</button>
-
-              <button type="button" id="showing-edit-btn" class="btn btn-warning">
-                Edit Data</button>
-
-              <button type="button" id="showing-hapus-btn" class="btn btn-danger">
-                Hapus Data</button>
             </div>
             <div class="card-body table-responsive p-0">
-              <table class="table table-hover text-nowrap">
+              <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th>No</th>
-                    <th>Nama Gedung</th>
-                    <th>Nama Pengurus</th>
-                    <th>Kapasitas</th>
-                    <th>Deskripsi</th>
-                    <th></th>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Gedung</th>
+                    <th scope="col">Nama Pengurus</th>
+                    <th scope="col">Kapasitas</th>
+                    <th scope="col">Deskripsi</th>
+                    <th scope="col">Aksi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -48,14 +42,12 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");
                     <td><?= $data['nama_gedung'] ?></td>
                     <td><?= $data['nama_pengurus'] ?></td>
                     <td><?= $data['kapasitas'] ?></td>
-                    <td><?= $data['deskripsi'] ?></td>
+                    <td style="max-width: 300px;"><?= $data['deskripsi'] ?></td>
                     <td id="button-aksi">
                       <button type="button" class="btn btn-warning" data-toggle="modal"
                         data-target="#modaledit-<?= $key ?>">Edit</button>
                       <button type="button" class="btn btn-danger" data-toggle="modal"
                         data-target="#modalhapus-<?= $key ?>">Hapus</button>
-                      <!-- <button type="button" id="btn-edit-data" class="btn btn-warning" data-toggle="modal" data-target="#modaledit-<?= $key ?>">Edit</button>
-                        <button type="button" id="btn-hapus-data" class="btn btn-danger" data-toggle="modal" data-target="#modalhapus-<?= $key ?>">Hapus</button> -->
                     </td>
                   </tr>
                   <?php } ?>
