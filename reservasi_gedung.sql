@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Nov 2023 pada 06.46
+-- Waktu pembuatan: 10 Des 2023 pada 10.22
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.1.17
 
@@ -51,7 +51,7 @@ INSERT INTO `admin` (`id`, `nama`, `username`, `password`, `level`) VALUES
 CREATE TABLE `galeri` (
   `id_galeri` varchar(100) NOT NULL,
   `nama_gedung` varchar(100) NOT NULL,
-  `foto_gedung` blob NOT NULL
+  `foto_gedung` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -63,10 +63,10 @@ CREATE TABLE `galeri` (
 CREATE TABLE `gedung` (
   `id_gedung` varchar(50) NOT NULL,
   `nama_gedung` varchar(100) NOT NULL,
-  `foto` blob NOT NULL,
+  `foto` varchar(100) NOT NULL,
   `nama_pengurus` varchar(100) DEFAULT NULL,
   `kapasitas` int(11) DEFAULT NULL,
-  `deskripsi` varchar(200) NOT NULL
+  `deskripsi` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -105,7 +105,7 @@ CREATE TABLE `penyewaan` (
   `tanggal_akhir` date NOT NULL,
   `jumlah_peserta` int(11) NOT NULL,
   `surat_pengantar` varchar(100) NOT NULL,
-  `deskripsi` varchar(100) NOT NULL,
+  `deskripsi` text NOT NULL,
   `status` enum('Menunggu','Disetujui','Ditolak') NOT NULL DEFAULT 'Menunggu'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -118,6 +118,12 @@ CREATE TABLE `penyewaan` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indeks untuk tabel `galeri`
+--
+ALTER TABLE `galeri`
+  ADD PRIMARY KEY (`id_galeri`);
 
 --
 -- Indeks untuk tabel `gedung`
