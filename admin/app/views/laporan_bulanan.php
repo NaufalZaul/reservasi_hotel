@@ -1,6 +1,5 @@
 <?php
 include "app/config/koneksi.php";
-// include "app/controller/HandlingTimeLaporan.php";
 
 $bulan = array(
   1 => 'Januari',
@@ -41,17 +40,17 @@ if (isset($_POST['cari_bulan'])) {
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="d-flex justify-between p-3">
-              <form action="" method="post">
-                <select class="form-select p-2 rounded" name="bulan" aria-label="Default select example">
+            <div class="row p-3">
+              <form action="" method="post" class="col d-flex">
+                <select class="form-control p-2 rounded w-50" name="bulan" aria-label="Default select example">
                   <option selected>Open this select menu</option>
                   <?php foreach ($bulan as $key => $bln) { ?>
-                    <option value="<?= $key ?>"><?= $bln ?></option>
+                  <option value="<?= $key ?>"><?= $bln ?></option>
                   <?php } ?>
                 </select>
-                <button type="submit" name="cari_bulan" class="btn btn-primary">Cari</button>
+                <button type="submit" name="cari_bulan" class="btn btn-primary mx-2">Cari Laporan</button>
               </form>
-              <a href="app/controller/HandleCetakLaporan.php?cetak=bulanan" target="_blank">
+              <a href="app/controller/HandleCetakLaporan.php?cetak=bulanan" target="_blank" class="col text-right">
                 <button type="submit" name="cetak_bulanan" class="btn btn-primary">Cetak Laporan</button>
               </a>
             </div>
@@ -72,23 +71,21 @@ if (isset($_POST['cari_bulan'])) {
                 </thead>
                 <tbody>
                   <?php foreach ($sql as $key => $data) {
-                    // if (handlingTimeLaporan('bulanan', $data['tanggal_mulai'])) {
                   ?>
-                    <tr>
-                      <td><?= $key + 1 ?></td>
-                      <td><?= $data['nama_gedung'] ?> </td>
-                      <td><?= $data['penanggung_jawab'] ?> </td>
-                      <td><?= $data['no_telp'] ?> </td>
-                      <td><?= $data['tanggal_mulai'] ?> </td>
-                      <td><?= $data['tanggal_akhir'] ?> </td>
-                      <td>
-                        <?= empty($data['surat_pengantar']) ? 'tidak ada' : 'ada' ?>
-                      </td>
-                      <td><?= $data['jumlah_peserta'] ?> </td>
-                      <td><?= $data['status'] ?></td>
-                    </tr>
+                  <tr>
+                    <td><?= $key + 1 ?></td>
+                    <td><?= $data['nama_gedung'] ?> </td>
+                    <td><?= $data['penanggung_jawab'] ?> </td>
+                    <td><?= $data['no_telp'] ?> </td>
+                    <td><?= $data['tanggal_mulai'] ?> </td>
+                    <td><?= $data['tanggal_akhir'] ?> </td>
+                    <td>
+                      <?= empty($data['surat_pengantar']) ? 'tidak ada' : 'ada' ?>
+                    </td>
+                    <td><?= $data['jumlah_peserta'] ?> </td>
+                    <td><?= $data['status'] ?></td>
+                  </tr>
                   <?php }
-                  // } 
                   ?>
                 </tbody>
               </table>

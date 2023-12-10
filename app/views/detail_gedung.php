@@ -10,8 +10,7 @@ while ($row = mysqli_fetch_array($gedung)) {
   <div class="px-5">
     <div class="text-center">
       <h1 class="mt-5 mb-4" style="font-weight: 700;">Detail Gedung <?= $row['nama_gedung'] ?></h1>
-      <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($row['foto']) ?>" alt="Image"
-        class="img-fluid w-75 mx-auto">
+      <img src="admin/public/image/<?= $row['foto'] ?>" alt="Image" class="img-fluid w-75 mx-auto">
     </div>
     <article class="py-4" style="font-size: 18px;"><?= $row['deskripsi'] ?></article>
     <div class="">
@@ -23,8 +22,8 @@ while ($row = mysqli_fetch_array($gedung)) {
             ?>
         <div class="col-md-4 col-lg-4 my-3">
           <div class="hotel-room text-center position-relative">
-            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($sql['foto_gedung']) ?>" alt="Image"
-              class="shadow-sm w-100" height="300" style="object-fit:cover;">
+            <img src="admin/public/image/gallery/<?= $sql['foto_gedung'] ?>" alt="Image" class="shadow-sm w-100"
+              height="300" style="object-fit:cover;">
           </div>
         </div>
         <?php }

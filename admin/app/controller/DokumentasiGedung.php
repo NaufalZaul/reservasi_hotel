@@ -26,29 +26,34 @@ function deleteDokumentasiGedung()
 {
   global $conn;
 
-  $id_galeri = $_GET['id_galeri'];
-  $sql = mysqli_query($conn, "DELETE FROM `galeri` WHERE id_galeri='$id_galeri'");
+  $nama_gedung = $_GET['nama_gedung'];
+  $foto_galeri = getData($nama_gedung);
+
+  foreach ($foto_galeri as $key => $value) {
+    unlink('../../public/image/gallery/' . $value[2]);
+  }
+
+  $sql = mysqli_query($conn, "DELETE FROM `galeri` WHERE nama_gedung='$nama_gedung'");
 
   if ($sql) {
     header('Location: /reservasi/admin/?filename=dokumentasi_gedung');
   }
 }
 
+function getData($nama)
+{
+  global $conn;
+  $sql = mysqli_query($conn, "SELECT * FROM galeri WHERE nama_gedung='$nama'");
+
+  return mysqli_fetch_all($sql);
+}
 
 function fileImage()
 {
   $file = $_FILES['foto_gedung'];
-  if (!empty($file)) {
-    //info file
-    $filename = $file['name'];
-    $filetype = pathinfo($filename, PATHINFO_EXTENSION);
+  $unique_file_name = uniqid() . '_' . strtolower($file['name']);
+  $file_tmp = $file['tmp_name'];
 
-    //file format
-    $formattype = array('jpg', 'png', 'jpeg');
-    if (in_array($filetype, $formattype)) {
-      $image = $file['tmp_name'];
-      $imageContent = addslashes(file_get_contents($image));
-      return $imageContent;
-    }
-  }
+  move_uploaded_file($file_tmp, "../../public/image/gallery/" . $unique_file_name);
+  return $unique_file_name;
 }

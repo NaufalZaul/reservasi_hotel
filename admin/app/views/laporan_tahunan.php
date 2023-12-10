@@ -1,13 +1,5 @@
 <?php
 include "app/config/koneksi.php";
-// include "app/controller/HandlingTimeLaporan.php";
-
-
-$tahun = array();
-$query = mysqli_query($conn, "SELECT DISTINCT YEAR(tanggal_mulai) AS unique_year FROM penyewaan");
-foreach ($query as $key => $value) {
-  array_push($tahun, $value['unique_year']);
-}
 
 if (isset($_POST['cari_tahun'])) {
   $filter = $_POST['tahun'];
@@ -38,18 +30,13 @@ if (isset($_POST['cari_tahun'])) {
       <div class="row">
         <div class="col-12">
           <div class="card">
-            <div class="d-flex justify-content-between p-3">
-              <form action="" method="post">
-                <select class="form-select p-2 rounded" name="tahun" aria-label="Default select example">
-                  <option selected>Open this select menu</option>
-                  <?php foreach ($tahun as $key => $thn) { ?>
-                    <option value="<?= $thn ?>"><?= $thn ?></option>
-                  <?php } ?>
-                </select>
-                <button type="submit" name="cari_tahun" class="btn btn-primary">Cari</button>
+            <div class="row p-3">
+              <form action="" method="post" class="d-flex col">
+                <input type="number" class="form-control w-75" name="tahun" id="" placeholder="Masukkan tahun">
+                <button type="submit" name="cari_tahun" class="btn btn-primary mx-2">Cari laporan</button>
               </form>
 
-              <a href="app/controller/HandleCetakLaporan.php?cetak=tahunan" target="_blank">
+              <a href="app/controller/HandleCetakLaporan.php?cetak=tahunan" target="_blank" class="col text-right">
                 <button type="submit" name="cetak_bulanan" class="btn btn-primary"> Cetak Laporan</button>
               </a>
             </div>
@@ -70,7 +57,6 @@ if (isset($_POST['cari_tahun'])) {
                 </thead>
                 <tbody>
                   <?php foreach ($sql as $key => $data) {
-                    // if (handlingTimeLaporan('tahunan', $data['tanggal_mulai'])) {
                   ?>
                     <tr>
                       <td><?= $key + 1 ?></td>
@@ -86,7 +72,6 @@ if (isset($_POST['cari_tahun'])) {
                       <td><?= $data['status'] ?></td>
                     </tr>
                   <?php }
-                  // }
                   ?>
                 </tbody>
               </table>

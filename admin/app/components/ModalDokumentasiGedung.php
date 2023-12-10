@@ -56,8 +56,7 @@ $galeri = mysqli_query($conn, "SELECT * FROM galeri");
         </div>
         <div class="modal-body">
           <h4>Yakin ingin menghpus dokumentasi gedung <?= $data['nama_gedung'] ?></h4>
-          <input type="text" class="form-control" name="id_galeri" id="exampleInputPassword1" placeholder="Password"
-            value="<?= $data['id_galeri'] ?>" hidden>
+          <input type="text" class="form-control" name="nama_gedung" value="<?= $data['nama_gedung'] ?>" hidden>
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Batalkan</button>

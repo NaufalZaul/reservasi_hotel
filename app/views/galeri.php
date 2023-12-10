@@ -12,12 +12,11 @@ $galeri = mysqli_query($conn, "SELECT * FROM galeri");
 
     <div class="row">
       <?php while ($sql = mysqli_fetch_array($galeri)) { ?>
-      <div class="col-md-4 col-lg-4 my-3">
-        <div class="hotel-room text-center position-relative">
-          <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($sql['foto_gedung']) ?>" alt="Image"
-            class="shadow-sm w-100" height="300" style="object-fit:cover;">
+        <div class="col-md-4 col-lg-4 my-3">
+          <div class="hotel-room text-center position-relative">
+            <img src="admin/public/image/gallery/<?= $sql['foto_gedung'] ?>" alt="Image" class="shadow-sm w-100" height="300" style="object-fit:cover;">
+          </div>
         </div>
-      </div>
       <?php } ?>
     </div>
   </div>

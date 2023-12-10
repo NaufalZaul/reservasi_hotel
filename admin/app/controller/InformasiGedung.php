@@ -30,7 +30,7 @@ function editDataGedung()
 {
   global $conn;
   $id_gedung = $_POST["id_gedung"];
-  $nama_gedung = (int) $_POST["nama_gedung"];
+  $nama_gedung = $_POST["nama_gedung"];
   $foto_gedung = fileImage();
   $nama_pengurus = $_POST["nama_pengurus"];
   $kapasitas = $_POST["kapasitas"];
@@ -52,6 +52,10 @@ function deleteDataGedung()
   global $conn;
 
   $id_gedung = $_GET['id_gedung'];
+  $foto_gedung = getData($id_gedung);
+
+  unlink('../../public/image/' . $foto_gedung['foto']);
+
   $sql = mysqli_query($conn, "DELETE FROM gedung WHERE id_gedung='$id_gedung'");
 
   if ($sql) {
@@ -59,21 +63,26 @@ function deleteDataGedung()
   }
 }
 
+function getData($id)
+{
+  global $conn;
+  $sql = mysqli_query($conn, "SELECT * FROM gedung WHERE id_gedung='$id'");
+
+  return mysqli_fetch_array($sql);
+}
 
 function fileImage()
 {
-  $file = $_FILES['foto_gedung'];
-  if (!empty($file)) {
-    //info file
-    $filename = $file['name'];
-    $filetype = pathinfo($filename, PATHINFO_EXTENSION);
+  $name_img = $_FILES['foto_gedung']['name'];
 
-    //file format
-    $formattype = array('jpg', 'png', 'jpeg');
-    if (in_array($filetype, $formattype)) {
-      $image = $file['tmp_name'];
-      $imageContent = addslashes(file_get_contents($image));
-      return $imageContent;
-    }
+  if (!empty($name_img)) {
+    $file = $_FILES['foto_gedung'];
+    $unique_file_name = uniqid() . '_' . strtolower($file['name']);
+    $file_tmp = $file['tmp_name'];
+
+    move_uploaded_file($file_tmp, "../../public/image/" . $unique_file_name);
+    return $unique_file_name;
+  } else {
+    return $name_img;
   }
 }

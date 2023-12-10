@@ -67,11 +67,11 @@ $gedung = mysqli_query($conn, "SELECT * FROM gedung");
             <div class="card-body">
               <div class="form-group">
                 <label for="exampleInputEmail1">Nama Gedung</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama gedung" name="nomor_gedung" value="<?= $data['nama_gedung'] ?>">
+                <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nama gedung" name="nama_gedung" value="<?= $data['nama_gedung'] ?>">
               </div>
               <div class="form-group">
                 <label>Foto Gedung</label>
-                <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($data['foto']) ?>" alt="Image" class="w-100 h-100" style="object-fit:cover;">
+                <img src="public/image/<?= $data['foto'] ?>" class="w-100 h-100" style="object-fit:cover;" alt="">
                 <label for="exampleInputEmail1" class="mt-2">*Ubah Foto</label>
                 <input type="file" class="form-control" id="exampleInputEmail1" placeholder="Foto gedung" name="foto_gedung">
               </div>
